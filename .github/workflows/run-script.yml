@@ -1,0 +1,25 @@
+name: Execute Python Script Directly on GitHub
+
+# This triggers the execution manually using a button or automatically on code push
+on: 
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-search-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository Code
+      uses: actions/checkout@v4
+
+    - name: Initialize Cloud Python Environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Run Script via Command Line
+      run: |
+        cd SLA2_25UAM029
+        python profile_search.py
