@@ -2,7 +2,7 @@ import time
 import tracemalloc
 from collections import deque
 
-def generate_large_grid(size=500):
+def generate_large_grid(size=250):
     graph = {}
     for r in range(size):
         for c in range(size):
@@ -36,20 +36,33 @@ def dfs(graph, start, target):
                 stack.append(neighbor)
     return False
 
-def profile_algorithm(algo_func, graph, start, target, name):
-    tracemalloc.start()
-    start_time = time.perf_counter()
-    algo_func(graph, start, target)
-    end_time = time.perf_counter()
-    _, peak_memory = tracemalloc.get_traced_memory()
-    tracemalloc.stop()
+def profile_algorithm(algo_func, graph, start, target, name, iterations=5):
+    times = []
+    peak_memories = []
     
-    execution_time_ms = (end_time - start_time) * 1000
-    peak_memory_kb = peak_memory / 1024
+    for _ in range(iterations):
+        tracemalloc.start()
+        start_time = time.perf_counter()
+        
+        algo_func(graph, start, target)
+        
+        end_time = time.perf_counter()
+        _, peak_memory = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        
+        times.append((end_time - start_time) * 1000)
+        peak_memories.append(peak_memory / 1024)
     
-    print(f"=== {name} Performance ===")
-    print(f"Execution Time: {execution_time_ms:.4f} ms")
-    print(f"Peak Memory Footprint: {peak_memory_kb:.2f} KB\n")
+    best_time = min(times)
+    worst_time = max(times)
+    avg_time = sum(times) / len(times)
+    avg_peak_mem = sum(peak_memories) / len(peak_memories)
+    
+    print(f"=== {name} Performance Over {iterations} Runs ===")
+    print(f"Best Execution Time   : {best_time:.4f} ms")
+    print(f"Worst Execution Time  : {worst_time:.4f} ms")
+    print(f"Average Execution Time: {avg_time:.4f} ms")
+    print(f"Avg Peak Memory Space : {avg_peak_mem:.2f} KB\n")
 
 if __name__ == "__main__":
     print("Generating hardware evaluation grid environment...")
