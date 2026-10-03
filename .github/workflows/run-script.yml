@@ -20,6 +20,6 @@ jobs:
         python-version: '3.11'
 
     - name: Run Script via Command Line
-      run: |
-        cd SLA2_25UAM029
-        python profile_search.py
+  run: |
+    cd SLA2_25UAM029/BFS_DFS_Profiling
+    python profile_search.py
