@@ -16,15 +16,12 @@ dot.node("Target", "Target Node Check", shape="box")
 # BFS flow
 dot.edge("BFS", "Queue", label="Uses")
 dot.edge("Queue", "Visited", label="Processes Nodes")
+dot.edge("BFS", "Target", label="Checks")
 
 # DFS flow
 dot.edge("DFS", "Stack", label="Uses")
 dot.edge("Stack", "Visited", label="Processes Nodes")
-
-# Common search operations
-dot.edge("Visited", "Target", label="Checks")
-dot.edge("Target", "BFS", label="Search Result")
-dot.edge("Target", "DFS", label="Search Result")
+dot.edge("DFS", "Target", label="Checks")
 
 # Generate diagram
 dot.render(

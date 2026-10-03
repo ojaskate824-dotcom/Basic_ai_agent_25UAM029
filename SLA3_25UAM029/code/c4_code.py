@@ -34,8 +34,8 @@ dot.node(
 dot.edge("Graph", "BFS", label="Graph")
 dot.edge("Graph", "DFS", label="Graph")
 
-dot.edge("BFS", "Profile", label="Search Result")
-dot.edge("DFS", "Profile", label="Search Result")
+dot.edge("BFS", "Profile", label="Algorithm Function")
+dot.edge("DFS", "Profile", label="Algorithm Function")
 
 # Generate diagram
 dot.render(
