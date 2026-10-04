@@ -5,6 +5,9 @@ from graphviz import Digraph
 
 dot = Digraph("C4_Code")
 
+# Left-to-right layout
+dot.attr(rankdir="LR")
+
 # Main functions
 dot.node(
     "Graph",
@@ -27,15 +30,35 @@ dot.node(
 dot.node(
     "Profile",
     "profile_algorithm()\nMeasures performance",
-    shape="box"
+    shape="box",
+    style="rounded"
 )
 
-# Function relationships
-dot.edge("Graph", "BFS", label="Graph")
-dot.edge("Graph", "DFS", label="Graph")
+# Graph creation to search algorithms
+dot.edge(
+    "Graph",
+    "BFS",
+    label="Graph"
+)
 
-dot.edge("BFS", "Profile", label="Algorithm Function")
-dot.edge("DFS", "Profile", label="Algorithm Function")
+dot.edge(
+    "Graph",
+    "DFS",
+    label="Graph"
+)
+
+# Search algorithms to profiling
+dot.edge(
+    "BFS",
+    "Profile",
+    label="Algorithm Function"
+)
+
+dot.edge(
+    "DFS",
+    "Profile",
+    label="Algorithm Function"
+)
 
 # Generate diagram
 dot.render(

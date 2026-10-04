@@ -5,18 +5,63 @@ from graphviz import Digraph
 
 dot = Digraph("C2_Container")
 
-# Containers
-dot.node("Input", "Graph & Input Setup", shape="box")
-dot.node("BFS", "BFS Search", shape="box")
-dot.node("DFS", "DFS Search", shape="box")
-dot.node("Profile", "Performance Profiling\n& Output", shape="box")
+# Top-to-bottom layout
+dot.attr(rankdir="TB")
 
-# Flow
-dot.edge("Input", "BFS", label="Graph, Start, Target")
-dot.edge("Input", "DFS", label="Graph, Start, Target")
+# Main containers
+dot.node(
+    "Input",
+    "GRAPH & INPUT SETUP",
+    shape="box",
+    style="rounded"
+)
 
-dot.edge("BFS", "Profile", label="Search Result")
-dot.edge("DFS", "Profile", label="Search Result")
+dot.node(
+    "BFS",
+    "BFS SEARCH",
+    shape="box",
+    style="rounded"
+)
+
+dot.node(
+    "DFS",
+    "DFS SEARCH",
+    shape="box",
+    style="rounded"
+)
+
+dot.node(
+    "Profile",
+    "PERFORMANCE PROFILING\n& OUTPUT",
+    shape="box",
+    style="rounded"
+)
+
+# Input to search containers
+dot.edge(
+    "Input",
+    "BFS",
+    label="Graph, Start, Target"
+)
+
+dot.edge(
+    "Input",
+    "DFS",
+    label="Graph, Start, Target"
+)
+
+# Search results to profiling
+dot.edge(
+    "BFS",
+    "Profile",
+    label="Search Result"
+)
+
+dot.edge(
+    "DFS",
+    "Profile",
+    label="Search Result"
+)
 
 # Generate diagram
 dot.render(

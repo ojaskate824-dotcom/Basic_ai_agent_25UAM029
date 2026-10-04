@@ -20,21 +20,21 @@ AI helped structure the context diagram by identifying the user, system, inputs,
 
 AI helped organize the system into logical containers based on the actual implementation:
 
-* Graph & Input Setup
-* BFS Search
-* DFS Search
-* Performance Profiling & Output
+- Graph & Input Setup
+- BFS Search
+- DFS Search
+- Performance Profiling & Output
 
 ### C3 - Component
 
 AI helped identify the main internal components of the BFS/DFS Search Engine, including:
 
-* BFS Algorithm
-* DFS Algorithm
-* Queue Management (BFS)
-* Stack Management (DFS)
-* Visited Node Tracking & Node Expansion
-* Target Node Check
+- BFS Algorithm
+- DFS Algorithm
+- Queue Management (BFS)
+- Stack Management (DFS)
+- Visited Node Tracking & Node Expansion
+- Target Node Check
 
 ### C4 - Code
 
@@ -42,10 +42,14 @@ AI helped organize the existing implementation into a code-level overview.
 
 The functions represented in the C4 diagram are based on the actual project implementation:
 
-* `get_small_graph()`
-* `bfs()`
-* `dfs()`
-* `profile_algorithm()`
+- `get_small_graph()`
+- `bfs()`
+- `dfs()`
+- `profile_algorithm()`
+
+### Diagram Revision
+
+The C1, C2, C3, and C4 diagrams were revised using different visual layouts to improve originality while maintaining consistency with the actual implementation.
 
 ## Student Contribution
 

@@ -6,28 +6,100 @@ from graphviz import Digraph
 dot = Digraph("C1_Context")
 
 # User
-dot.node("User", "User", shape="actor")
+dot.node(
+    "User",
+    "USER",
+    shape="ellipse"
+)
+
+# Inputs
+dot.node(
+    "GraphInput",
+    "Graph + Start Node\n+ Target Node",
+    shape="box"
+)
+
+dot.node(
+    "AlgorithmInput",
+    "BFS / DFS\nSelection",
+    shape="box"
+)
 
 # Main System
 dot.node(
     "System",
-    "BFS/DFS Graph Search\n& Performance Profiling System",
+    "BFS / DFS SEARCH\n& PERFORMANCE PROFILING\nSYSTEM",
+    shape="box",
+    style="rounded"
+)
+
+# Outputs
+dot.node(
+    "SearchResult",
+    "Search Result",
     shape="box"
 )
 
-# Input
-dot.edge(
-    "User",
-    "System",
-    label="Graph\nStart Node\nTarget Node\nBFS / DFS"
+dot.node(
+    "NodesExpanded",
+    "Nodes Expanded",
+    shape="box"
 )
 
-# Output
+dot.node(
+    "Performance",
+    "Best / Average /\nWorst Time",
+    shape="box"
+)
+
+# User provides inputs
+dot.edge(
+    "User",
+    "GraphInput",
+    label="Provides"
+)
+
+dot.edge(
+    "User",
+    "AlgorithmInput",
+    label="Selects"
+)
+
+# Inputs go to system
+dot.edge(
+    "GraphInput",
+    "System",
+    label="Input Data"
+)
+
+dot.edge(
+    "AlgorithmInput",
+    "System",
+    label="Search Method"
+)
+
+# System produces outputs
 dot.edge(
     "System",
-    "User",
-    label="Search Result\nNodes Expanded\nBest / Average / Worst Time"
+    "SearchResult",
+    label="Produces"
+)
+
+dot.edge(
+    "System",
+    "NodesExpanded",
+    label="Tracks"
+)
+
+dot.edge(
+    "System",
+    "Performance",
+    label="Measures"
 )
 
 # Generate diagram
-dot.render("../diagrams/c1_context_diagram", format="png", cleanup=True)
+dot.render(
+    "../diagrams/c1_context_diagram",
+    format="png",
+    cleanup=True
+)
